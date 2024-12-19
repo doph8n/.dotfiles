@@ -49,10 +49,10 @@ return {
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       sources = cmp.config.sources({
-        { name = "nvim_lsp", max_item_count = 5 },
-        { name = "luasnip",  max_item_count = 5 },
-        { name = "buffer",   max_item_count = 5 },
-        { name = "path",     max_item_count = 5 },
+        { name = "nvim_lsp", max_item_count = 10 },
+        { name = "luasnip",  max_item_count = 10 },
+        { name = "buffer",   max_item_count = 10 },
+        { name = "path",     max_item_count = 10 },
       }),
       experimental = {
         ghost_text = true,

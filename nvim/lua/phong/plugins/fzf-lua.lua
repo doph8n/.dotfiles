@@ -158,18 +158,12 @@ return {
     -- Common picks
     { "<leader>,", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
     { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Grep (Root Dir)" },
-
-    {
-      "<leader><space>",
-      function() require("fzf-lua").files({ cwd = vim.env.HOME }) end,
-      desc = "Find Files (Home Dir)"
-    },
+    { "<leader><space>", "<cmd>FzfLua files cwd=~/<cr>", desc = "Find Files (Home Dir)" },
 
     -- find
     { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
     { "<leader>fc", "<cmd>FzfLua files cwd=~/.config/nvim<cr>", desc = "Find Config File" },
     { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files (Root Dir)" },
-    { "<leader>fF", "<cmd>FzfLua files<cr>", desc = "Find Files (cwd)" },
     { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git-files)" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent" },
     { "<leader>fR", "<cmd>FzfLua oldfiles<cr>", desc = "Recent (cwd)" },
