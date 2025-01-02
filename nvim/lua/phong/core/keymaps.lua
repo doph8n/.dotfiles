@@ -40,15 +40,6 @@ keymap(
 --keywordprg
 keymap("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
--- tabs
-keymap("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-keymap("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
-keymap("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-keymap("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-keymap("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-keymap("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-keymap("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
 -- windows
 keymap("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
 keymap("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
@@ -58,9 +49,6 @@ keymap("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 -- better indenting in visual mode
 keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
-
--- lazy (If you use lazy.nvim plugin manager)
-keymap("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- lazy
 keymap("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })

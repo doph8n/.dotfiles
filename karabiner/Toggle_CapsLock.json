@@ -1,0 +1,16 @@
+{
+    "description": "Toggle Caps Lock when both Shift keys are pressed",
+    "manipulators": [
+        {
+            "from": {
+                "modifiers": { "optional": ["any"] },
+                "simultaneous": [
+                    { "key_code": "left_shift" },
+                    { "key_code": "right_shift" }
+                ]
+            },
+            "to": [{ "key_code": "caps_lock" }],
+            "type": "basic"
+        }
+    ]
+}

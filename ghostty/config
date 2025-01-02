@@ -1,0 +1,21 @@
+theme = catppuccin-mocha
+
+background = 101010
+foreground = BBBBBB
+cursor-color = C9C9C9
+selection-background = BBBBBB
+selection-foreground = 404040
+
+font-size = 20
+mouse-hide-while-typing = true
+window-decoration = true
+keybind = global:cmd+/=toggle_quick_terminal
+macos-option-as-alt = true
+background-opacity = 0.85
+background-blur-radius = 20
+
+cursor-style = block
+cursor-style-blink = false
+
+confirm-close-surface = false
+macos-titlebar-style = hidden
