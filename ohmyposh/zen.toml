@@ -65,5 +65,3 @@ template = '❯'
 foreground = 'magenta'
 background = 'transparent'
 template = '❯❯'
-
-
