@@ -16,29 +16,6 @@ return {
     config.defaults.keymap.builtin["<c-f>"] = "preview-page-down"
     config.defaults.keymap.builtin["<c-b>"] = "preview-page-up"
 
-    -- Toggle between current buffer's directory and home with ctrl-r
-    config.defaults.actions.files["ctrl-r"] = function(_, ctx)
-        local buf_dir = vim.fn.expand('%:p:h')  -- Get current buffer's directory
-        local home = vim.loop.os_homedir()
-        local current_cwd = vim.fn.getcwd()     -- Get global cwd (or use ctx.cwd if available)
-
-        -- Determine target directory based on current cwd
-        local target_cwd
-        if current_cwd == home then
-            -- Switch to buffer's directory
-            target_cwd = buf_dir
-        else
-            -- Switch to home
-            target_cwd = home
-        end
-
-        -- Change the global cwd (optional, remove if not desired)
-        vim.cmd("cd " .. vim.fn.fnameescape(target_cwd))
-
-        -- Reopen fzf-lua with the new cwd
-        require("fzf-lua").files({ cwd = target_cwd })
-    end
-
     -- Image previewer setup
     local img_previewer
     for _, v in ipairs({
@@ -101,12 +78,12 @@ return {
   end,
   keys = {
     -- find
-    { "<leader><space>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files" },
+    { "<leader><space>", function() require("fzf-lua").files({ cwd = "/" }) end, desc = "Find Files(ROOT)" },
+    { "<leader><tab>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
     { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
     { "<leader>,", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+    { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files" },
-    { "<leader>ff", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
-    { "<leader>fF", function() require("fzf-lua").files({ cwd = "/" }) end, desc = "Find Files(ROOT)" },
     -- git
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
     { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
