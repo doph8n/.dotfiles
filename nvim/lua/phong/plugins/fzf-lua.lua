@@ -1,4 +1,3 @@
-
 return {
   "ibhagwan/fzf-lua",
   cmd = "FzfLua",
@@ -17,20 +16,27 @@ return {
     config.defaults.keymap.builtin["<c-f>"] = "preview-page-down"
     config.defaults.keymap.builtin["<c-b>"] = "preview-page-up"
 
-    -- Toggle root dir / cwd with ctrl-r
+    -- Toggle between current buffer's directory and home with ctrl-r
     config.defaults.actions.files["ctrl-r"] = function(_, ctx)
-      local cwd = vim.fn.getcwd()
-      local home = vim.loop.os_homedir()
+        local buf_dir = vim.fn.expand('%:p:h')  -- Get current buffer's directory
+        local home = vim.loop.os_homedir()
+        local current_cwd = vim.fn.getcwd()     -- Get global cwd (or use ctx.cwd if available)
 
-      -- Toggle between home directory and previous directory
-      if cwd == home then
-        vim.cmd("cd -") -- Switch to the previous directory
-      else
-        vim.cmd("cd " .. home) -- Switch to the home directory
-      end
+        -- Determine target directory based on current cwd
+        local target_cwd
+        if current_cwd == home then
+            -- Switch to buffer's directory
+            target_cwd = buf_dir
+        else
+            -- Switch to home
+            target_cwd = home
+        end
 
-      -- Reopen fzf-lua picker with updated directory
-      require("fzf-lua").files({ cwd = vim.fn.getcwd() })
+        -- Change the global cwd (optional, remove if not desired)
+        vim.cmd("cd " .. vim.fn.fnameescape(target_cwd))
+
+        -- Reopen fzf-lua with the new cwd
+        require("fzf-lua").files({ cwd = target_cwd })
     end
 
     -- Image previewer setup
@@ -94,12 +100,22 @@ return {
     require("fzf-lua").setup(opts)
   end,
   keys = {
-    { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Find Files" },
+    -- find
+    { "<leader><space>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files" },
     { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
     { "<leader>,", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files" },
+    { "<leader>ff", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
+    { "<leader>fF", function() require("fzf-lua").files({ cwd = "/" }) end, desc = "Find Files(ROOT)" },
+    -- git
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
     { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
-  },
+    -- search
+    { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Registers" },
+    { "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "Auto Commands" },
+    { "<leader>sf", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search Word" },
+    { "<leader>sF", "<cmd>FzfLua grep_cword<cr>", desc = "Search Current Word" },
+    { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
+    { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "Workspace Diagnostics" },
+  }
 }
-

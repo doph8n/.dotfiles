@@ -154,21 +154,6 @@ return {
         }
         lspconfig["jdtls"].setup(jdtls_config)
       end,
-      -- Special configuration for Go
-      ["gopls"] = function()
-        lspconfig["gopls"].setup({
-          capabilities = capabilities,
-          settings = {
-            gopls = {
-              analyses = {
-                unusedparams = true,
-              },
-              staticcheck = true,
-            },
-          },
-        })
-      end,
-      -- Special configuration for Markdown
       ["marksman"] = function()
         lspconfig["marksman"].setup({
           capabilities = capabilities,
