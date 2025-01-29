@@ -81,7 +81,7 @@ return {
     { "<leader><space>", function() require("fzf-lua").files({ cwd = "$HOME" }) end, desc = "Find Files(ROOT)" },
     { "<leader><backspace>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
     { "<leader>/", function() require("fzf-lua").live_grep({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Live Grep (CWD)" },
-    { "<leader>;", function() require("fzf-lua").live_grep({ cwd = "$HOME" }) end, desc = "Live Grep (ROOT)"},
+    { "<leader>.", function() require("fzf-lua").live_grep({ cwd = "$HOME" }) end, desc = "Live Grep (ROOT)"},
     { "<leader>,", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
     { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files" },
