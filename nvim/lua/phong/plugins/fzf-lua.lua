@@ -79,7 +79,7 @@ return {
   keys = {
     -- find
     { "<leader><space>", function() require("fzf-lua").files({ cwd = "/" }) end, desc = "Find Files(ROOT)" },
-    { "<leader><tab>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
+    { "<leader><backspace>", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
     { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
     { "<leader>,", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
     { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
