@@ -1,0 +1,30 @@
+theme = mellow 
+
+background = 181616
+foreground = c5c9c5
+cursor-color = c8c093
+selection-background = 2d4f67
+selection-foreground = c8c093
+
+font-size = 18 
+mouse-hide-while-typing = true
+window-decoration = true
+keybind = global:cmd+/=toggle_quick_terminal
+macos-option-as-alt = true
+background-opacity = 0.9
+background-blur-radius = 50
+
+mouse-hide-while-typing = true
+
+cursor-style = block
+cursor-style-blink = false
+
+window-padding-balance = true
+window-padding-x = 20
+window-padding-y = 20
+
+clipboard-read = allow
+clipboard-write = allow
+
+confirm-close-surface = false
+macos-titlebar-style = hidden

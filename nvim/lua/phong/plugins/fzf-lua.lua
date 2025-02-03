@@ -84,15 +84,18 @@ return {
     { "<leader>.", function() require("fzf-lua").live_grep({ cwd = "$HOME" }) end, desc = "Live Grep (ROOT)"},
     { "<leader>,", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
     { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
+    { "<leader>;", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search Word" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files" },
+    -- for laptop
+    { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find File (CWD)" },
+    { "<leader>fF", function() require("fzf-lua").files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files(Buffer Dir)" },
     -- git
     { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
     { "<leader>gs", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
     -- search
     { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Registers" },
     { "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "Auto Commands" },
-    { "<leader>sf", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search Word" },
-    { "<leader>sF", "<cmd>FzfLua grep_cword<cr>", desc = "Search Current Word" },
+    { "<leader>sr", "<cmd>FzfLua grep_cword<cr>", desc = "Search Current Word" },
     { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
     { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "Workspace Diagnostics" },
   }
