@@ -8,13 +8,12 @@ selection-foreground = c8c093
 
 font-size = 18 
 mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
 window-decoration = true
 keybind = global:cmd+/=toggle_quick_terminal
 macos-option-as-alt = true
 background-opacity = 0.9
 background-blur-radius = 50
-
-mouse-hide-while-typing = true
 
 cursor-style = block
 cursor-style-blink = false
